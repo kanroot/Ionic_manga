@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
+import {ComponentesCompartidosModule} from '../../componentes-compartidos/componentes-compartidos.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         IonicModule,
-        CatalogoPageRoutingModule
+        CatalogoPageRoutingModule,
+        ComponentesCompartidosModule
     ],
   declarations: [CatalogoPage]
 })
