@@ -1,13 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Inicio</ion-title>
+    <app-hamburguesa slot="end"></app-hamburguesa>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
-  <app-manga-display-card nombreCategoria="Acción" [mangaItems]="mangaItems"></app-manga-display-card>
-  <app-manga-display-card nombreCategoria="Otra categoría" [mangaItems]="mangaItems"></app-manga-display-card>
+  <div class="ion-padding">
+    <ion-card class="ion-padding">
+      <ion-card-title class="ion-text-center">Navegación</ion-card-title>
+      <ion-list>
+        <ion-item href="{{ pagina.redirectTo }}" *ngFor="let pagina of paginas">
+          <ion-icon slot="start" name="{{ pagina.icono }}"></ion-icon>
+          <ion-label>{{ pagina.nombre }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div class="ion-padding">
+    <ion-title>Destacados</ion-title>
+    <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
+    <app-manga-display-card nombreCategoria="Acción" [mangaItems]="mangaItems"></app-manga-display-card>
+    <app-manga-display-card nombreCategoria="Otra categoría" [mangaItems]="mangaItems"></app-manga-display-card>
+  </div>
 </ion-content>
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MangaItemModel} from './componentes/manga-item/manga-item.component';
+import {Pagina} from '../../app.component';
 
 @Component({
   selector: 'app-inicio',
@@ -23,6 +24,25 @@ export class InicioPage implements OnInit {
       rutaImg : 'assets/img/berserk.jpg',
       nombre : 'Manga 3',
       nCaps : 5000
+    },
+  ];
+
+  //Buscar forma de evitar tener que definir esto dos veces
+  paginas: Pagina[] = [
+    {
+      icono: 'home-outline',
+      nombre: 'Inicio',
+      redirectTo: '/inicio'
+    },
+    {
+      icono: 'book-outline',
+      nombre: 'Catálogo',
+      redirectTo: '/catalogo'
+    },
+    {
+      icono: 'person-circle-outline',
+      nombre: 'Registro',
+      redirectTo: '/registro'
     },
   ];
 

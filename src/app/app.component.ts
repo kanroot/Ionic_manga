@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TabsPage} from './paginas/tabs/tabs.page';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,32 @@ import {TabsPage} from './paginas/tabs/tabs.page';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  rootPage: any = TabsPage;
+  paginas: Pagina[] = [
+    {
+      icono: 'home-outline',
+      nombre: 'Inicio',
+      redirectTo: '/inicio'
+    },
+    {
+      icono: 'book-outline',
+      nombre: 'Catálogo',
+      redirectTo: '/catalogo'
+    },
+    {
+      icono: 'person-circle-outline',
+      nombre: 'Registro',
+      redirectTo: '/registro'
+    },
+  ];
+
   constructor() {
   }
+}
+
+export interface Pagina {
+  icono: string;
+  nombre: string;
+  redirectTo: string;
 }
 
 
