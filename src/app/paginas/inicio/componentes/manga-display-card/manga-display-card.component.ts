@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {MangaItemModel} from '../manga-item/manga-item.component';
 
 @Component({
   selector: 'app-manga-display-card',
@@ -14,4 +13,10 @@ export class MangaDisplayCardComponent implements OnInit {
 
   ngOnInit() {}
 
+}
+
+export class MangaItemModel {
+  rutaImg: string;
+  nombre: string;
+  nCaps: number;
 }
