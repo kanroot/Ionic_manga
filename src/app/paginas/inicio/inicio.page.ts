@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MangaItemModel} from './componentes/manga-item/manga-item.component';
+import { MangaItemModel } from './componentes/manga-display-card/manga-display-card.component';
 import {Pagina} from '../../app.component';
 
 @Component({
@@ -29,6 +29,36 @@ export class InicioPage implements OnInit {
 
   //Buscar forma de evitar tener que definir esto dos veces
   paginas: Pagina[] = [
+    {
+      icono: 'home-outline',
+      nombre: 'Inicio',
+      redirectTo: '/inicio'
+    },
+    {
+      icono: 'book-outline',
+      nombre: 'Catálogo',
+      redirectTo: '/catalogo'
+    },
+    {
+      icono: 'person-circle-outline',
+      nombre: 'Registro',
+      redirectTo: '/registro'
+    },
+    {
+      icono: 'home-outline',
+      nombre: 'Inicio',
+      redirectTo: '/inicio'
+    },
+    {
+      icono: 'book-outline',
+      nombre: 'Catálogo',
+      redirectTo: '/catalogo'
+    },
+    {
+      icono: 'person-circle-outline',
+      nombre: 'Registro',
+      redirectTo: '/registro'
+    },
     {
       icono: 'home-outline',
       nombre: 'Inicio',

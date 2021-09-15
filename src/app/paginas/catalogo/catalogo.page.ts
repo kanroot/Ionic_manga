@@ -17,12 +17,12 @@ export class CatalogoPage implements OnInit {
     {
       id: 1,
       nombre: 'Manga 2',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/hitomi.jpg'
     },
     {
       id: 2,
       nombre: 'Manga 3',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/berserk.jpg'
     },
     {
       id: 3,
@@ -32,12 +32,12 @@ export class CatalogoPage implements OnInit {
     {
       id: 4,
       nombre: 'Manga 5',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/hitomi.jpg'
     },
     {
       id: 0,
       nombre: 'Manga 1',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/berserk.jpg'
     },
     {
       id: 1,
@@ -47,12 +47,12 @@ export class CatalogoPage implements OnInit {
     {
       id: 2,
       nombre: 'Manga 3',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/hitomi.jpg'
     },
     {
       id: 3,
       nombre: 'Manga 4',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/berserk.jpg'
     },
     {
       id: 4,
@@ -62,12 +62,12 @@ export class CatalogoPage implements OnInit {
     {
       id: 0,
       nombre: 'Manga 1',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/hitomi.jpg'
     },
     {
       id: 1,
       nombre: 'Manga 2',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/berserk.jpg'
     },
     {
       id: 2,
@@ -77,12 +77,12 @@ export class CatalogoPage implements OnInit {
     {
       id: 3,
       nombre: 'Manga 4',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/hitomi.jpg'
     },
     {
       id: 4,
       nombre: 'Manga 5',
-      rutaImg: 'assets/img/devil.jpg'
+      rutaImg: 'assets/img/berserk.jpg'
     },
   ];
 
