@@ -14,7 +14,8 @@ export class RegistroPage implements OnInit {
     nick:'',
     avatar: 0,
     email:'',
-    password:''
+    password:'',
+    password2:''
   };
 
   slideOpts = {
