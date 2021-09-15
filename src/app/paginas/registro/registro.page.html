@@ -7,37 +7,28 @@
 
 <ion-content>
   <form #formulario="ngForm" (ngSubmit) ="onSubmit()">
+
+  <ion-slides id="avatarId" #avatarId pager="true" [options]="slideOpts" >
+    <ion-slide>
+      <img class="avatar" src="assets/img/profile.jpg" alt=""/>
+    </ion-slide>
+    <ion-slide>
+      <img class="avatar" src="assets/img/profile2.jpg" alt=""/>
+    </ion-slide>
+    <ion-slide>
+      <img class="avatar" src="assets/img/profile3.jpg" alt=""/>
+    </ion-slide>
+    <ion-slide>
+      <img class="avatar" src="assets/img/profile4.jpg" alt=""/>
+    </ion-slide>
+
+  </ion-slides>
+    <ion-button  expand="full" fill="outline" (click)="seleccionarAvatar()">
+      Selecciona tu avatar!
+    </ion-button>
+
 <ion-grid class="ion-padding">
   <ion-row>
-    <ion-label>Selecciona tu avatar: </ion-label>
-  </ion-row>
-  <ion-row>
-    <ion-col size="6">
-      <ion-card><img class="avatar" src="assets/img/profile.jpg"/>
-        <ion-button size="small">Seleccionar</ion-button>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card><img class="avatar" src="assets/img/profile2.jpg"/>
-        <ion-button size="small">Seleccionar</ion-button>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="6">
-      <ion-card><img class="avatar" src="assets/img/profile3.jpg"/>
-        <ion-button size="small">Seleccionar</ion-button>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card><img class="avatar" src="assets/img/profile4.jpg"/>
-        <ion-button size="small">Seleccionar</ion-button>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-
     <ion-col size = 12>
     <ion-list>
     <ion-item>
