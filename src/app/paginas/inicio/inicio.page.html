@@ -1,29 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-    <app-hamburguesa slot="end"></app-hamburguesa>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Inicio</ion-title>
+        <app-hamburguesa slot="end"></app-hamburguesa>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-card class="ion-padding">
-      <ion-card-title class="ion-text-center">Navegación</ion-card-title>
-      <ion-list>
-        <ion-item href="{{ pagina.redirectTo }}" *ngFor="let pagina of paginas">
-          <ion-icon slot="start" name="{{ pagina.icono }}"></ion-icon>
-          <ion-label>{{ pagina.nombre }}</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-  </div>
+    <ion-item>
+        <ion-title>Navegación</ion-title>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" *ngFor="let pagina of paginas">
+                <app-boton-navegacion [pagina]="pagina"></app-boton-navegacion>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-  <div class="ion-padding">
-    <ion-title>Destacados</ion-title>
-    <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
-    <app-manga-display-card nombreCategoria="Acción" [mangaItems]="mangaItems"></app-manga-display-card>
-    <app-manga-display-card nombreCategoria="Otra categoría" [mangaItems]="mangaItems"></app-manga-display-card>
-  </div>
+    <ion-item>
+        <ion-title>Destacados</ion-title>
+    </ion-item>
+    <div class="ion-padding">
+        <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
+        <ion-item-divider></ion-item-divider>
+        <app-manga-display-card nombreCategoria="Acción" [mangaItems]="mangaItems"></app-manga-display-card>
+        <ion-item-divider></ion-item-divider>
+        <app-manga-display-card nombreCategoria="Otra categoría" [mangaItems]="mangaItems"></app-manga-display-card>
+    </div>
+
 </ion-content>
 
 

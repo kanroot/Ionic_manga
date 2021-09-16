@@ -1,14 +1,29 @@
-<ion-card class="ion-padding">
-  <ion-card-title class="ion-text-center">{{ nombreCategoria }}</ion-card-title>
-  <ion-card-content>
-    <ion-list>
-      <ion-item href="/" *ngFor="let manga of mangaItems">
-        <ion-thumbnail slot="start">
-          <img src="{{ manga.rutaImg }}" alt="{{ manga.nombre }}">
-        </ion-thumbnail>
-        <ion-label class="ion-text-center" position="fixed">{{ manga.nombre }}</ion-label>
-        <ion-note slot="end">Caps: {{ manga.nCaps }}</ion-note>
-      </ion-item>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
+<!--<ion-card class="ion-padding">-->
+<!--  <ion-card-title class="ion-text-center">{{ nombreCategoria }}</ion-card-title>-->
+<!--  <ion-card-content>-->
+<!--    <ion-list>-->
+<!--      <ion-item href="/" *ngFor="let manga of mangaItems">-->
+<!--        <ion-thumbnail slot="start">-->
+<!--          <img src="{{ manga.rutaImg }}" alt="{{ manga.nombre }}">-->
+<!--        </ion-thumbnail>-->
+<!--        <ion-label class="ion-text-center" position="fixed">{{ manga.nombre }}</ion-label>-->
+<!--        <ion-note slot="end">Caps: {{ manga.nCaps }}</ion-note>-->
+<!--      </ion-item>-->
+<!--    </ion-list>-->
+<!--  </ion-card-content>-->
+<!--</ion-card>-->
+
+<ion-item lines="none">
+    <ion-label class="ion-text-center">{{ nombreCategoria }}</ion-label>
+</ion-item>
+<ion-slides [options]="slideOpts" [pager]="true">
+    <ion-slide *ngFor="let manga of mangaItems">
+        <ion-card>
+            <img [alt]="manga.nombre" [src]="manga.rutaImg">
+            <ion-card-content>
+                <ion-label>{{ manga.nombre }}</ion-label>
+            </ion-card-content>
+        </ion-card>
+    </ion-slide>
+</ion-slides>
+
