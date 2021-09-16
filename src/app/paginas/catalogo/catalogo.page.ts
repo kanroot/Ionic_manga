@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MangaPreviewModel} from '../../componentes-compartidos/mangapreview/mangapreview.component';
+import {MangaPreviewModel} from '../../compartido/modelos/manga-preview.model';
 
 @Component({
     selector: 'app-catalogo',
@@ -9,66 +9,150 @@ import {MangaPreviewModel} from '../../componentes-compartidos/mangapreview/mang
 export class CatalogoPage implements OnInit {
     //TODO: tomar desde servicio en lugar hardcodear
     catalogo: MangaPreviewModel[] = [
-        {
-            id: 0,
-            nombre: 'Devilman',
-            rutaImg: 'assets/img/devil.jpg'
-        },
-        {
-            id: 1,
-            nombre: 'Domestic na kanojo',
-            rutaImg: 'assets/img/hitomi.png'
-        },
-        {
-            id: 2,
-            nombre: 'Berserk',
-            rutaImg: 'assets/img/berserk.jpg'
-        },
-        {
-            id: 0,
-            nombre: 'Devilman',
-            rutaImg: 'assets/img/devil.jpg'
-        },
-        {
-            id: 1,
-            nombre: 'Domestic na kanojo',
-            rutaImg: 'assets/img/hitomi.png'
-        },
-        {
-            id: 2,
-            nombre: 'Berserk',
-            rutaImg: 'assets/img/berserk.jpg'
-        },
-        {
-            id: 0,
-            nombre: 'Devilman',
-            rutaImg: 'assets/img/devil.jpg'
-        },
-        {
-            id: 1,
-            nombre: 'Domestic na kanojo',
-            rutaImg: 'assets/img/hitomi.png'
-        },
-        {
-            id: 2,
-            nombre: 'Berserk',
-            rutaImg: 'assets/img/berserk.jpg'
-        },
-        {
-            id: 0,
-            nombre: 'Devilman',
-            rutaImg: 'assets/img/devil.jpg'
-        },
-        {
-            id: 1,
-            nombre: 'Domestic na kanojo',
-            rutaImg: 'assets/img/hitomi.png'
-        },
-        {
-            id: 2,
-            nombre: 'Berserk',
-            rutaImg: 'assets/img/berserk.jpg'
-        },
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
     ];
 
     constructor() {

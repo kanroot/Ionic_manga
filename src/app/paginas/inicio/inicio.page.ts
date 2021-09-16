@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MangaItemModel} from './componentes/manga-display-card/manga-display-card.component';
 import {Pagina} from '../../app.component';
+import {MangaPreviewModel} from '../../compartido/modelos/manga-preview.model';
 
 @Component({
     selector: 'app-inicio',
@@ -9,22 +9,31 @@ import {Pagina} from '../../app.component';
 })
 export class InicioPage implements OnInit {
 
-    mangaItems: MangaItemModel[] = [
-        {
-            rutaImg: 'assets/img/devil.jpg',
-            nombre: 'Devilman',
-            nCaps: 10
-        },
-        {
-            rutaImg: 'assets/img/hitomi.png',
-            nombre: 'Domestic na kanojo',
-            nCaps: 325
-        },
-        {
-            rutaImg: 'assets/img/berserk.jpg',
-            nombre: 'Berserk',
-            nCaps: 5000
-        },
+    mangaItems: MangaPreviewModel[] = [
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Devilman',
+                enlaceImg: 'assets/img/devil.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Domestic no kanojo',
+                enlaceImg: 'assets/img/hitomi.png',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
+        new MangaPreviewModel().deserializar(
+            {
+                nombre: 'Berserk',
+                enlaceImg: 'assets/img/berserk.jpg',
+                enlaceManga: 'https://google.cl',
+                generos: ['género 1', 'género 2']
+            }
+        ),
     ];
 
     //Buscar forma de evitar tener que definir esto dos veces
