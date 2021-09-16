@@ -1,23 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button class="ion-color-light"
-                       defaultHref="/"
-                       text=""
-                       color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title>catálogo</ion-title>
-    <app-hamburguesa slot="end"></app-hamburguesa>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button class="ion-color-light"
+                             defaultHref="/"
+                             text=""
+                             color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title>catálogo</ion-title>
+        <app-hamburguesa slot="end"></app-hamburguesa>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid class="ion-padding">
-    <ion-row class="ion-align-items-center">
-      <ion-col *ngFor="let manga of catalogo" size="12" size-sm="6" size-md="3" size-lg="2">
-        <app-mangapreview [data]="manga"></app-mangapreview>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid class="ion-padding">
+        <ion-row class="ion-align-items-center">
+            <ion-col *ngFor="let manga of catalogo" size="12" size-sm="6" size-md="3" size-lg="2">
+                <app-mangapreview [data]="manga"></app-mangapreview>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
 
