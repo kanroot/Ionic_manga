@@ -8,8 +8,8 @@ import {InicioPageRoutingModule} from './inicio-routing.module';
 
 import {InicioPage} from './inicio.page';
 import {MangaDisplayCardComponent} from './componentes/manga-display-card/manga-display-card.component';
-import {ComponentesCompartidosModule} from '../../componentes-compartidos/componentes-compartidos.module';
 import {BotonNavegacionComponent} from './componentes/boton-navegacion/boton-navegacion.component';
+import {CompartidoModule} from '../../compartido/compartido.module';
 
 @NgModule({
     imports: [
@@ -17,7 +17,7 @@ import {BotonNavegacionComponent} from './componentes/boton-navegacion/boton-nav
         FormsModule,
         IonicModule,
         InicioPageRoutingModule,
-        ComponentesCompartidosModule
+        CompartidoModule
     ],
     declarations: [InicioPage, MangaDisplayCardComponent, BotonNavegacionComponent]
 })

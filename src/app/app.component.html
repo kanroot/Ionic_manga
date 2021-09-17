@@ -1,23 +1,21 @@
 <ion-app>
-  <ion-menu side="end" menuId="first" contentId="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Menú</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-
-      <ion-list>
-
-        <ion-menu-toggle *ngFor="let pagina of paginas">
-          <ion-item [routerLink]="pagina.redirectTo"
-                    detail=true>
-            <ion-icon [name]="pagina.icono" slot="start" color="primary"></ion-icon>
-            {{ pagina.nombre}}
-          </ion-item>
-        </ion-menu-toggle>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+    <ion-menu side="end" menuId="first" contentId="main">
+        <ion-header>
+            <ion-toolbar color="primary">
+                <ion-title>Menú</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle *ngFor="let pagina of paginas">
+                    <ion-item [routerLink]="pagina.redirectTo"
+                              detail=true>
+                        <ion-icon [name]="pagina.icono" slot="start" color="primary"></ion-icon>
+                        {{ pagina.nombre}}
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

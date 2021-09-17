@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {MangaPreviewModel} from '../../../../compartido/modelos/manga-preview.model';
 
 @Component({
     selector: 'app-manga-display-card',
@@ -7,7 +8,7 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class MangaDisplayCardComponent implements OnInit {
     @Input() nombreCategoria: string;
-    @Input() mangaItems: MangaItemModel[];
+    @Input() mangaItems: MangaPreviewModel[];
 
     slideOpts = {
         initialSlide: 0,
@@ -20,10 +21,4 @@ export class MangaDisplayCardComponent implements OnInit {
     ngOnInit() {
     }
 
-}
-
-export class MangaItemModel {
-    rutaImg: string;
-    nombre: string;
-    nCaps: number;
 }

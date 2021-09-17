@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RegistroPageRoutingModule } from './registro-routing.module';
+import {RegistroPageRoutingModule} from './registro-routing.module';
 
-import { RegistroPage } from './registro.page';
-import {ComponentesCompartidosModule} from '../../componentes-compartidos/componentes-compartidos.module';
+import {RegistroPage} from './registro.page';
+import {CompartidoModule} from '../../compartido/compartido.module';
 
 @NgModule({
     imports: [
@@ -15,8 +15,9 @@ import {ComponentesCompartidosModule} from '../../componentes-compartidos/compon
         FormsModule,
         IonicModule,
         RegistroPageRoutingModule,
-        ComponentesCompartidosModule
+        CompartidoModule
     ],
-  declarations: [RegistroPage]
+    declarations: [RegistroPage]
 })
-export class RegistroPageModule {}
+export class RegistroPageModule {
+}
