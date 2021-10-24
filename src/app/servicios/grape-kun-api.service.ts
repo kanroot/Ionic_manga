@@ -10,8 +10,8 @@ export class GrapeKunApiService {
 
     constructor(private http: HttpClient ) { }
 
-    consultarCatalogo()
+    consultarCatalogo(pagina: number)
     {
-        return this.http.get<RespuestaCatalogo>(environment.urlCatalogo);
+        return this.http.get<RespuestaCatalogo>(environment.urlCatalogo + `?page=${pagina}`);
     }
 }
