@@ -1,7 +1,6 @@
 {
-  "name": "grape-kun",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
+    "name": "grape-kun",
+    "integrations": {
+        "capacitor": {}
+    }
 }
