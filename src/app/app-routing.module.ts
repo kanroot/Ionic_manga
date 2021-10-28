@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'miperfil',
+    loadChildren: () => import('./paginas/miperfil/miperfil.module').then( m => m.MiperfilPageModule)
+  },
 ];
 
 @NgModule({
