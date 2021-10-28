@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Component, OnInit} from '@angular/core';
 import {Pagina} from '../../app.component';
-import {MangaPreviewModel} from '../../compartido/modelos/manga-preview.model';
+import {MangaPreviewModel} from '../../compartido/modelos/manga.modelo';
 
 @Component({
     selector: 'app-inicio',
@@ -10,30 +11,24 @@ import {MangaPreviewModel} from '../../compartido/modelos/manga-preview.model';
 export class InicioPage implements OnInit {
 
     mangaItems: MangaPreviewModel[] = [
-        new MangaPreviewModel().deserializar(
-            {
-                nombre: 'Devilman',
-                enlaceImg: 'assets/img/devil.jpg',
-                enlaceManga: 'https://google.cl',
-                generos: ['género 1', 'género 2']
-            }
-        ),
-        new MangaPreviewModel().deserializar(
-            {
-                nombre: 'Domestic no kanojo',
-                enlaceImg: 'assets/img/hitomi.png',
-                enlaceManga: 'https://google.cl',
-                generos: ['género 1', 'género 2']
-            }
-        ),
-        new MangaPreviewModel().deserializar(
-            {
-                nombre: 'Berserk',
-                enlaceImg: 'assets/img/berserk.jpg',
-                enlaceManga: 'https://google.cl',
-                generos: ['género 1', 'género 2']
-            }
-        ),
+        {
+            id: 1,
+            nombre: 'Devilman',
+            enlace_img: 'assets/img/devil.jpg',
+            enlace_manga: 'https://google.cl',
+            generos_como_lista: ['género 1', 'género 2'],
+            generos: 'generos',
+            contenido_adulto: false
+        },
+        {
+            id: 2,
+            nombre: 'Domestic no kanojo',
+            enlace_img: 'assets/img/hitomi.png',
+            enlace_manga: 'https://google.cl',
+            generos_como_lista: ['género 1', 'género 2'],
+            generos: 'generos',
+            contenido_adulto: false
+        },
     ];
 
     //Buscar forma de evitar tener que definir esto dos veces

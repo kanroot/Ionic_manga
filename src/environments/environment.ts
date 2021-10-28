@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    urlCatalogo: 'http://45.76.79.176:8000/api/catalogo/'
 };
 
 /*
