@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
-    path: 'detalle',
+    path: 'detalle/:datos',
     loadChildren: () => import('./paginas/detalle/detalle.module').then( m => m.DetallePageModule)
   },
   {

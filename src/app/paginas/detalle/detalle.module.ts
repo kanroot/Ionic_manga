@@ -17,6 +17,6 @@ import {CompartidoModule} from '../../compartido/compartido.module';
         DetallePageRoutingModule,
         CompartidoModule
     ],
-  declarations: [DetallePage]
+    declarations: [DetallePage]
 })
 export class DetallePageModule {}

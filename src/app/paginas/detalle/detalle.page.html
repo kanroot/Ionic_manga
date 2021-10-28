@@ -1,16 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button class="ion-color-light"
-        defaultHref="/"
-        text=""
-        color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Detalle</ion-title>
-    <app-hamburguesa slot="end"></app-hamburguesa>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button class="ion-color-light"
+                             defaultHref="/"
+                             text=""
+                             color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Detalle</ion-title>
+        <app-hamburguesa slot="end"></app-hamburguesa>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
+    <ion-card class="ion-padding">
+        <ion-card-content>
+            <ion-img [src]="detalle.imagen"></ion-img>
+        </ion-card-content>
+        <ion-card-title>{{detalle.nombre}}</ion-card-title>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-card-subtitle>Sinopsis: </ion-card-subtitle>
+            <ion-grid>
+                <ion-label>No disponible</ion-label>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-card-subtitle>Géneros:</ion-card-subtitle>
+            <ion-grid class="ion-padding">
+                <ion-row *ngFor="let g of detalle.generos">
+                    <ion-note>{{g.genero}}</ion-note>
+                </ion-row>
+            </ion-grid>
+            <ion-card-subtitle *ngIf="detalle.contenido_adulto">Contenido adulto: <ion-icon name="checkmark-outline"></ion-icon></ion-card-subtitle>
+            <ion-card-subtitle *ngIf="!detalle.contenido_adulto">Contenido adulto: <ion-icon name="close-outline"></ion-icon></ion-card-subtitle>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-card-subtitle>Capítulos</ion-card-subtitle>
+            <ion-list *ngFor="let c of detalle.capitulos">
+                <ion-item>{{c.nombre}}</ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
 
