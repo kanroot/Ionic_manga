@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {DatosNavegacionService} from './servicios/datos-navegacion.service';
 
 @Component({
     selector: 'app-root',
@@ -6,25 +7,10 @@ import {Component} from '@angular/core';
     styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-    paginas: Pagina[] = [
-        {
-            icono: 'home-outline',
-            nombre: 'Inicio',
-            redirectTo: '/inicio'
-        },
-        {
-            icono: 'book-outline',
-            nombre: 'Catálogo',
-            redirectTo: '/catalogo'
-        },
-        {
-            icono: 'person-circle-outline',
-            nombre: 'Registro',
-            redirectTo: '/registro'
-        },
-    ];
+    paginas: Pagina[];
 
-    constructor() {
+    constructor(private datosNavegacion: DatosNavegacionService) {
+        this.paginas = this.datosNavegacion.paginas;
     }
 }
 
