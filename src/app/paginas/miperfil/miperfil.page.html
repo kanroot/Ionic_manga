@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button class="ion-color-light"
+                             defaultHref="/"
+                             text=""
+                             color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Mi Perfil</ion-title>
+        <app-hamburguesa slot="end"></app-hamburguesa>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-padding">
+        <ion-row>
+            <ion-label>Hola, {{datosPerfil.username}}!</ion-label>
+        </ion-row>
+
+        <form>
+            <div class="input-group">
+                <ion-list>
+                    <ion-item>
+                        <ion-title>Tus preferencias</ion-title>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Filtrar contenido adulto</ion-label>
+                        <ion-toggle></ion-toggle>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Auto login</ion-label>
+                        <ion-toggle></ion-toggle>
+                    </ion-item>
+                    <ion-item>
+                        <ion-title>Tus favoritos</ion-title>
+                    </ion-item>
+                    <ion-item>
+                        <ion-col *ngFor="let manga of datosPerfil.favoritos" size="12" size-sm="6" size-md="3" size-lg="2">
+                            <app-mangapreview [data]="manga"></app-mangapreview>
+                        </ion-col>
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="block">Guardar cambios</ion-button>
+
+            </div>
+        </form>
+    </ion-grid>
+</ion-content>
