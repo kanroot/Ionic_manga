@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button class="ion-color-light"
+                             defaultHref="/"
+                             text=""
+                             color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Login</ion-title>
+        <app-hamburguesa slot="end"></app-hamburguesa>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="login()" [formGroup]="credentials">
+        <div class="input-group">
+            <ion-item>
+                <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+            </ion-item>
+            <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+                <span *ngIf="email.errors?.required">Dirección de correo es obligatoria</span>
+                <span *ngIf="email.errors?.email">Dirección de correo inválida</span>
+            </div>
+            <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+            </ion-item>
+            <div *ngIf="(password.dirty || password.touched) && password.errors?.required" class="errors">
+                <span *ngIf="password.errors?.required">La contraseña es obligatoria</span>
+            </div>
+        </div>
+
+        <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Log in</ion-button>
+        <ion-button type="button" expand="block" fill="clear" href="/registro">Registrarse</ion-button>
+    </form>
+</ion-content>
