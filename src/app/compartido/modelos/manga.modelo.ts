@@ -30,6 +30,7 @@ export interface CapituloDetalleModel {
     nombre: string;
     enlace: string;
     imagenes: ImagenModel[];
+    manga_id: number;
 }
 
 export interface GeneroModel {
@@ -44,5 +45,6 @@ export interface MangaDetalleModel {
     contenido_adulto: boolean;
     generos: GeneroModel[];
     capitulos: CapituloPreviewModel[];
+    manga_id: number;
 }
 

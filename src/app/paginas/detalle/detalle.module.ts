@@ -8,6 +8,7 @@ import { DetallePageRoutingModule } from './detalle-routing.module';
 
 import { DetallePage } from './detalle.page';
 import {CompartidoModule} from '../../compartido/compartido.module';
+import {CapituloPageModule} from '../capitulo/capitulo.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {CompartidoModule} from '../../compartido/compartido.module';
         FormsModule,
         IonicModule,
         DetallePageRoutingModule,
-        CompartidoModule
+        CompartidoModule,
+        CapituloPageModule
     ],
     declarations: [DetallePage]
 })

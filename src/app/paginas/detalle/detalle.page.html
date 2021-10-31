@@ -1,15 +1,7 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button class="ion-color-light"
-                             defaultHref="/"
-                             text=""
-                             color="primary"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Detalle</ion-title>
-        <app-hamburguesa slot="end"></app-hamburguesa>
-    </ion-toolbar>
+    <app-header titulo="Detalle Manga"></app-header>
 </ion-header>
+
 <ion-content>
     <ion-card class="ion-padding">
         <ion-card-content>
@@ -43,8 +35,8 @@
     <ion-card>
         <ion-card-content>
             <ion-card-subtitle>Capítulos</ion-card-subtitle>
-            <ion-list *ngFor="let c of detalle.capitulos">
-                <ion-item>{{c.nombre}}</ion-item>
+            <ion-list *ngFor="let c of detalle.capitulos; let i = index">
+                <ion-item (click)="obtenerCapituloDesdeCapPreview(i)">{{c.nombre}}</ion-item>
             </ion-list>
         </ion-card-content>
     </ion-card>

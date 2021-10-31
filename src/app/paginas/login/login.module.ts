@@ -8,6 +8,7 @@ import {LoginPageRoutingModule} from './login-routing.module';
 
 import {LoginPage} from './login.page';
 import {CompartidoModule} from '../../compartido/compartido.module';
+import {CapituloPageModule} from '../capitulo/capitulo.module';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {CompartidoModule} from '../../compartido/compartido.module';
         LoginPageRoutingModule,
         ReactiveFormsModule,
         CompartidoModule,
+        CapituloPageModule,
     ],
     declarations: [LoginPage]
 })

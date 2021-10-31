@@ -1,0 +1,11 @@
+<ion-header>
+    <app-header [titulo]="capitulo.nombre" ></app-header>
+</ion-header>
+
+<ion-content>
+<ion-list *ngFor="let imagen of capitulo.imagenes">
+    <ion-item >
+        <ion-img [src]="imagen.enlace"></ion-img>
+    </ion-item>
+</ion-list>
+</ion-content>

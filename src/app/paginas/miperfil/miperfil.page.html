@@ -1,22 +1,9 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button class="ion-color-light"
-                             defaultHref="/"
-                             text=""
-                             color="primary"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Mi Perfil</ion-title>
-        <app-hamburguesa slot="end"></app-hamburguesa>
-    </ion-toolbar>
+<app-header [titulo]="datosPerfil.username"></app-header>
 </ion-header>
 
 <ion-content>
     <ion-grid class="ion-padding">
-        <ion-row>
-            <ion-label>Hola, {{datosPerfil.username}}!</ion-label>
-        </ion-row>
-
         <form>
             <div class="input-group">
                 <ion-list>
