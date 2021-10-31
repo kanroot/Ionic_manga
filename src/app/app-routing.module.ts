@@ -34,6 +34,10 @@ const routes: Routes = [
         loadChildren: () => import('./paginas/miperfil/miperfil.module').then(m => m.MiperfilPageModule),
         canActivate: [AuthGuard]
     },
+  {
+    path: 'capitulo/:datos',
+    loadChildren: () => import('./paginas/capitulo/capitulo.module').then( m => m.CapituloPageModule)
+  },
 ];
 
 @NgModule({
