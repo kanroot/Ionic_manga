@@ -8,6 +8,7 @@ import { MiperfilPageRoutingModule } from './miperfil-routing.module';
 
 import { MiperfilPage } from './miperfil.page';
 import {CompartidoModule} from '../../compartido/compartido.module';
+import {CapituloPageModule} from '../capitulo/capitulo.module';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {CompartidoModule} from '../../compartido/compartido.module';
         FormsModule,
         IonicModule,
         MiperfilPageRoutingModule,
-        CompartidoModule
+        CompartidoModule,
+        CapituloPageModule
     ],
   declarations: [MiperfilPage]
 })
