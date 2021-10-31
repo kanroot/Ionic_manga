@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { InicioGuard } from './inicio.guard';
+import { AuthGuard } from './auth.guard';
 
-describe('InicioGuard', () => {
-  let guard: InicioGuard;
+describe('MiperfilGuard', () => {
+  let guard: AuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(InicioGuard);
+    guard = TestBed.inject(AuthGuard);
   });
 
   it('should be created', () => {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../servicios/auth.service';
 import {Router} from '@angular/router';
-import {AlertController, LoadingController} from '@ionic/angular';
+import {AlertController, LoadingController, ToastController} from '@ionic/angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -17,42 +17,51 @@ export class LoginPage implements OnInit {
         private router: Router,
         private loadingController: LoadingController,
         private fb: FormBuilder,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private toastController: ToastController
     ) {
     }
 
     ngOnInit() {
         this.credentials = this.fb.group({
-            email: ['correo@dominio.cl', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
+            email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
+            password: ['cityslicka', [Validators.required, Validators.minLength(6)]],
         });
     }
 
     async login() {
-        const loading = await this.loadingController.create();
+        const loading = await this.loadingController.create(
+            {
+                message: 'Iniciando sesión...',
+                translucent: true,
+            }
+        );
         await loading.present();
 
-        this.authService.login(this.credentials.value).subscribe(
-            async (res) => {
-                console.log(res);
+        (await this.authService.iniciarSesionConCredenciales(this.credentials.value)).subscribe(
+            async (_) => {
                 await loading.dismiss();
-                this.router.navigateByUrl('/inicio', { replaceUrl: true });
-            },
-            async (res) => {
-                await loading.dismiss();
-                console.log(res);
-                const alert = await this.alertController.create({
-                    header: 'Falló el inicio de sesión',
-                    message: res.error.error,
-                    buttons: ['OK'],
+                this.router.navigate(['/inicio']);
+                const toast = await this.toastController.create({
+                    message: `Bienvenido de vuelta, ${this.authService.usuarioConectado.username}!`,
+                    duration: 2000,
+                    position: 'top',
+                    color: 'success',
                 });
-
+                await toast.present();
+            },
+            async (err) => {
+                await loading.dismiss();
+                const alert = await this.alertController.create({
+                    header: 'Error al iniciar sesión',
+                    message: err.error.message,
+                    buttons: ['OK']
+                });
                 await alert.present();
             }
         );
     }
 
-    // Easy access for form fields
     get email() {
         return this.credentials.get('email');
     }

@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Pagina} from '../../app.component';
 import {MangaPreviewModel} from '../../compartido/modelos/manga.modelo';
 import {DatosNavegacionService} from '../../servicios/datos-navegacion.service';
+import {AuthService} from '../../servicios/auth.service';
 
 @Component({
     selector: 'app-inicio',
@@ -33,7 +34,7 @@ export class InicioPage implements OnInit {
     ];
 
     paginas: Pagina[];
-    constructor(private datosNavegacion: DatosNavegacionService) {
+    constructor(private datosNavegacion: DatosNavegacionService, public auth: AuthService) {
         this.paginas = this.datosNavegacion.paginas;
     }
 

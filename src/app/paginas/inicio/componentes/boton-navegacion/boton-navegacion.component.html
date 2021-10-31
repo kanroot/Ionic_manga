@@ -1,6 +1,6 @@
-<ion-card href="{{ pagina.redirectTo }}">
+<ion-card [routerLink]="pagina.redirectTo">
     <ion-item lines="none">
-        <ion-icon slot="start" name="{{ pagina.icono }}"></ion-icon>
+        <ion-icon slot="start" [name]="pagina.icono"></ion-icon>
         <ion-label>{{ pagina.nombre }}</ion-label>
     </ion-item>
 </ion-card>

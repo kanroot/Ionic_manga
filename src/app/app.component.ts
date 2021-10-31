@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {DatosNavegacionService} from './servicios/datos-navegacion.service';
+import {AuthService} from './servicios/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -9,8 +11,14 @@ import {DatosNavegacionService} from './servicios/datos-navegacion.service';
 export class AppComponent {
     paginas: Pagina[];
 
-    constructor(private datosNavegacion: DatosNavegacionService) {
+    constructor(private datosNavegacion: DatosNavegacionService, public auth: AuthService, private router: Router) {
         this.paginas = this.datosNavegacion.paginas;
+    }
+
+    async onLogout() {
+        await this.auth.cerrarSesion().then(_ => {
+            this.router.navigate(['/login']);
+        });
     }
 }
 

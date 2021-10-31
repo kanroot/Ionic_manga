@@ -6,6 +6,9 @@
 </ion-header>
 
 <ion-content>
+    <ion-item *ngIf="auth.estaAutenticado.value">
+        <ion-label >Hola, {{auth.usuarioConectado.username}}!</ion-label>
+    </ion-item>
     <ion-item>
         <ion-title>Navegación</ion-title>
     </ion-item>
