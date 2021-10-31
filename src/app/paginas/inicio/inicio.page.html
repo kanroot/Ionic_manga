@@ -6,9 +6,6 @@
 </ion-header>
 
 <ion-content>
-    <ion-item *ngIf="auth.estaAutenticado.value">
-        <ion-label >Hola, {{auth.usuarioConectado.username}}!</ion-label>
-    </ion-item>
     <ion-item>
         <ion-title>Navegación</ion-title>
     </ion-item>
@@ -20,8 +17,19 @@
         </ion-row>
     </ion-grid>
 
+<!--    Favoritos si el usuario está logueado-->
+    <div *ngIf="auth.estaAutenticado.value">
+        <ion-item>
+            <ion-title >Favoritos de {{auth.usuarioConectado.username}}</ion-title>
+        </ion-item>
+        <div class="ion-padding">
+            <app-manga-display-card nombreCategoria="Favoritos" [mangaItems]="mangaItems"></app-manga-display-card>
+        </div>
+    </div>
+
+<!--    Mangas aleatorios -->
     <ion-item>
-        <ion-title>Tus favoritos</ion-title>
+        <ion-title >Aleatorios</ion-title>
     </ion-item>
     <div class="ion-padding">
         <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
