@@ -2,6 +2,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Pagina} from '../../app.component';
 import {MangaPreviewModel} from '../../compartido/modelos/manga.modelo';
+import {DatosNavegacionService} from '../../servicios/datos-navegacion.service';
+import {AuthService} from '../../servicios/auth.service';
 
 @Component({
     selector: 'app-inicio',
@@ -31,26 +33,9 @@ export class InicioPage implements OnInit {
         },
     ];
 
-    //Buscar forma de evitar tener que definir esto dos veces
-    paginas: Pagina[] = [
-        {
-            icono: 'home-outline',
-            nombre: 'Inicio',
-            redirectTo: '/inicio'
-        },
-        {
-            icono: 'book-outline',
-            nombre: 'Catálogo',
-            redirectTo: '/catalogo'
-        },
-        {
-            icono: 'person-circle-outline',
-            nombre: 'Registro',
-            redirectTo: '/registro'
-        },
-    ];
-
-    constructor() {
+    paginas: Pagina[];
+    constructor(private datosNavegacion: DatosNavegacionService, public auth: AuthService) {
+        this.paginas = this.datosNavegacion.paginas;
     }
 
     ngOnInit() {
