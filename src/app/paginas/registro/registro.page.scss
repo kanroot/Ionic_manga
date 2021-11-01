@@ -1,11 +1,8 @@
-.avatar{
-  width: 100%;
-  height: 70%;
-}
-
-ion-card{
-  display: flex;
-  flex-direction: column;
-  width: 100% !important;
-  margin: 0 !important;
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger-shade);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
