@@ -12,56 +12,42 @@
 </ion-header>
 
 <ion-content>
-    <form #formulario="ngForm" (ngSubmit)="onSubmit()">
-
-        <ion-slides id="avatarId" #avatarId pager="true" [options]="slideOpts">
-            <ion-slide>
-                <img class="avatar" src="assets/img/profile.jpg" alt=""/>
-            </ion-slide>
-            <ion-slide>
-                <img class="avatar" src="assets/img/profile2.jpg" alt=""/>
-            </ion-slide>
-            <ion-slide>
-                <img class="avatar" src="assets/img/profile3.jpg" alt=""/>
-            </ion-slide>
-            <ion-slide>
-                <img class="avatar" src="assets/img/profile4.jpg" alt=""/>
-            </ion-slide>
-
-        </ion-slides>
-        <ion-button expand="full" fill="outline" (click)="seleccionarAvatar()">
-            Selecciona tu avatar!
-        </ion-button>
-
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()" [formGroup]="usuarioForm">
         <ion-grid class="ion-padding">
             <ion-row>
                 <ion-col size=12>
                     <ion-list>
                         <ion-item>
                             <ion-label position="floating">Nick:</ion-label>
-                            <ion-input type="username"
-                                       name="nick" [(ngModel)]="usuario.nick"
+                            <ion-input formControlName="username"
+                                       type="username"
                                        required></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Contraseña:</ion-label>
-                            <ion-input type="password"
-                                       name="password" [(ngModel)]="usuario.password"
+                            <ion-input formControlName="password"
+                                       type="password"
                                        required>
                             </ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Confirmar contraseña:</ion-label>
-                            <ion-input type="password"
-                                       name="password2" [(ngModel)]="usuario.password2"
-                                       required>
+                            <ion-input
+                                formControlName="passwordConfirm"
+                                type="password"
+                                required>
                             </ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="floating">Email:</ion-label>
-                            <ion-input type="email" name="email" [(ngModel)]="usuario.email"
-                                       pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                            <ion-input type="email" name="email" formControlName="email"
                                        required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Fecha Nacimiento</ion-label>
+                            <ion-datetime value="1990-02-19"
+                                          placeholder="Seleccione fecha"
+                                          formControlName="fec_nac"></ion-datetime>
                         </ion-item>
                     </ion-list>
                 </ion-col>

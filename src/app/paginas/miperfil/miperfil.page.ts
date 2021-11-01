@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UsuarioAnonimo, UsuarioModel} from '../../compartido/modelos/usuario.modelo';
+import {UsuarioModel} from '../../compartido/modelos/usuario.modelo';
+import {AuthService} from '../../servicios/auth.service';
 
 @Component({
     selector: 'app-miperfil',
@@ -7,12 +8,22 @@ import {UsuarioAnonimo, UsuarioModel} from '../../compartido/modelos/usuario.mod
     styleUrls: ['./miperfil.page.scss'],
 })
 export class MiperfilPage implements OnInit {
-    datosPerfil: UsuarioModel = UsuarioAnonimo;
+    datosPerfil: UsuarioModel;
+    filtrarAdulto: boolean;
+    autologin: boolean;
 
-    constructor() {
+    constructor(private auth: AuthService) {
     }
 
     ngOnInit() {
+        this.datosPerfil = this.auth.usuarioConectado;
+        this.filtrarAdulto = this.datosPerfil.preferencias.filtrar_contenido_adulto;
+        this.autologin = this.datosPerfil.preferencias.auto_login;
+    }
+
+    actualizarPreferencias(){
+        console.log('Actualizando preferencias', this.filtrarAdulto, this.autologin);
+        this.auth.actualizarPreferencias(this.filtrarAdulto, this.autologin);
     }
 
 }

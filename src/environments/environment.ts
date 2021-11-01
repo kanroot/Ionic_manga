@@ -4,7 +4,12 @@
 
 export const environment = {
     production: false,
-    urlCatalogo: 'http://45.76.79.176:8000/api/catalogo/'
+    urlCatalogo: 'http://45.76.79.176:8000/api/catalogo/',
+    urlRegistro: 'http://45.76.79.176:8000/api/registro/',
+    urlLogin: 'http://45.76.79.176:8000/api/login/',
+    urlLogout: 'http://45.76.79.176:8000/api/logout/',
+    urlLoginToken: 'http://45.76.79.176:8000/api/login-token',
+    urlActualizar: 'http://45.76.79.176:8000/api/actualizar/'
 };
 
 /*

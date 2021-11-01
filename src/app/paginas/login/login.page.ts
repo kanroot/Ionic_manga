@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../servicios/auth.service';
 import {Router} from '@angular/router';
-import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {LoadingController} from '@ionic/angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ToastManagerService} from '../../servicios/toast-manager.service';
+import {ErrorManagerService} from '../../servicios/error-manager.service';
 
 @Component({
     selector: 'app-login',
@@ -17,15 +19,15 @@ export class LoginPage implements OnInit {
         private router: Router,
         private loadingController: LoadingController,
         private fb: FormBuilder,
-        private alertController: AlertController,
-        private toastController: ToastController
+        private errorManager: ErrorManagerService,
+        private toast: ToastManagerService
     ) {
     }
 
     ngOnInit() {
         this.credentials = this.fb.group({
-            email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
-            password: ['cityslicka', [Validators.required, Validators.minLength(6)]],
+            email: [null, [Validators.required, Validators.email]],
+            password: [null, [Validators.required, Validators.minLength(6)]],
         });
     }
 
@@ -42,22 +44,11 @@ export class LoginPage implements OnInit {
             async (_) => {
                 await loading.dismiss();
                 this.router.navigate(['/inicio']);
-                const toast = await this.toastController.create({
-                    message: `Bienvenido de vuelta, ${this.authService.usuarioConectado.username}!`,
-                    duration: 2000,
-                    position: 'top',
-                    color: 'success',
-                });
-                await toast.present();
+                this.toast.mostrar('Bienvenido de vuelta, '+ this.authService.usuarioConectado.username);
             },
             async (err) => {
                 await loading.dismiss();
-                const alert = await this.alertController.create({
-                    header: 'Error al iniciar sesión',
-                    message: err.error.message,
-                    buttons: ['OK']
-                });
-                await alert.present();
+                this.errorManager.mostrar('Error al iniciar sesión', err);
             }
         );
     }

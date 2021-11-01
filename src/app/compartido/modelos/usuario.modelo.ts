@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {MangaPreviewModel} from './manga.modelo';
 
+export interface RespuestaUsuario {
+    user: UsuarioModel;
+    token: string;
+}
+
 export interface UsuarioModel {
+    id: number;
     username: string;
     email: string;
     fec_nac: Date;
@@ -14,13 +20,9 @@ export interface PreferenciasUsuarioModel{
     auto_login: boolean;
 }
 
-export const UsuarioAnonimo: UsuarioModel = {
-    username : 'Anónimo',
-    email : 'anonimo@anonimo.cl',
-    fec_nac : new Date(Date.now()),
-    favoritos : [],
-    preferencias : {
-        filtrar_contenido_adulto: true,
-        auto_login: false
-    }
-};
+export interface UsuarioRegistroModel {
+    username: string;
+    email: string;
+    password: string;
+    fec_nac: Date;
+}
