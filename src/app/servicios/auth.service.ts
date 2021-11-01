@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {StorageService} from './storage.service';
 import {
-    RespuestaUsuario,
+    RespuestaUsuario, UsuarioActualizarModel,
     UsuarioModel,
     UsuarioRegistroModel
 } from '../compartido/modelos/usuario.modelo';
@@ -41,7 +41,7 @@ export class EstadoAuth {
     providedIn: 'root'
 })
 export class AuthService {
-    estaAutenticado: BehaviorSubject<EstadoAuth> = new BehaviorSubject<EstadoAuth>(null);
+    estado: BehaviorSubject<EstadoAuth> = new BehaviorSubject<EstadoAuth>(null);
     token = '';
     usuarioConectado: UsuarioModel;
 
@@ -50,7 +50,7 @@ export class AuthService {
         private storage: StorageService,
         private toast: ToastManagerService,
         private errorManager: ErrorManagerService) {
-        this.estaAutenticado.subscribe((nuevoEstado: EstadoAuth) => this.onCambioEstadoAutenticado(nuevoEstado));
+        this.estado.subscribe((nuevoEstado: EstadoAuth) => this.onCambioEstadoAutenticado(nuevoEstado));
         this.intentaAutoLogin();
     }
 
@@ -86,7 +86,7 @@ export class AuthService {
         return this.http.post(environment.urlLogin, credentials).pipe(
             map((data: RespuestaUsuario) => data),
             tap(async (data: RespuestaUsuario) => {
-                await this.estaAutenticado.next(new EstadoAuth(true, data.user));
+                await this.estado.next(new EstadoAuth(true, data.user));
             }),
             switchMap(data => {
                 this.token = data.token;
@@ -103,12 +103,11 @@ export class AuthService {
                 Authorization: 'Token ' + token
             }
         );
-        console.log(headers);
 
         return this.http.post(environment.urlLoginToken, {}, {headers}).subscribe(
             (data: RespuestaUsuario) => {
                 this.usuarioConectado = data.user;
-                this.estaAutenticado.next(new EstadoAuth(true, data.user));
+                this.estado.next(new EstadoAuth(true, data.user));
                 this.conservarTokenEnlocal();
             },
             (error) => {
@@ -134,7 +133,7 @@ export class AuthService {
         console.log('Cerrando sesion');
         this.token = '';
         this.storage.eliminar(TOKEN_KEY);
-        this.estaAutenticado.next(new EstadoAuth(false, null));
+        this.estado.next(new EstadoAuth(false, null));
         return Promise.resolve();
     }
 
@@ -147,25 +146,22 @@ export class AuthService {
         return await this.storage.escribir(TOKEN_KEY, this.token);
     }
 
-    actualizarPreferencias(filtrar: boolean, autologin: boolean) {
-        const usuario = {
-            username: this.usuarioConectado.username,
-            email: this.usuarioConectado.email,
-            fec_nac: this.usuarioConectado.fec_nac,
-            preferencias_string: JSON.stringify(
-                {
-                    filtrar_contenido_adulto: filtrar,
-                    auto_login: autologin
-                }
-            ),
-            favoritos_string: JSON.stringify(this.usuarioConectado.favoritos)
-        };
+
+    actualizarUsuario() {
         const headers = new HttpHeaders(
             {
                 'Content-Type': 'application/json',
                 Authorization: 'Token ' + this.token
             }
         );
+
+        const usuario: UsuarioActualizarModel = {
+            username: this.usuarioConectado.username,
+            email: this.usuarioConectado.email,
+            fec_nac: this.usuarioConectado.fec_nac,
+            preferencias_string: JSON.stringify(this.usuarioConectado.preferencias),
+            favoritos_string: JSON.stringify(this.usuarioConectado.favoritos)
+        };
 
         return this.http.post(environment.urlActualizar, usuario, {headers}).subscribe(
             (data: any) => {
@@ -177,11 +173,11 @@ export class AuthService {
                     preferencias: JSON.parse(data.preferencias_string),
                     favoritos: JSON.parse(data.favoritos_string)
                 };
-                this.toast.mostrar('Preferencias actualizadas');
+                this.toast.mostrar('¡Perfil actualizado!');
                 this.conservarTokenEnlocal();
             },
             (error) => {
-                this.errorManager.mostrar('Error al actualizar preferencias', error.error.detail);
+                this.errorManager.mostrar('Error al actualizar perfil', error.error.detail);
             }
         );
     }

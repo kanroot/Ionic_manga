@@ -9,6 +9,7 @@ import { DetallePageRoutingModule } from './detalle-routing.module';
 import { DetallePage } from './detalle.page';
 import {CompartidoModule} from '../../compartido/compartido.module';
 import {CapituloPageModule} from '../capitulo/capitulo.module';
+import {CorazonLikeComponent} from './corazon-like/corazon-like.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,6 @@ import {CapituloPageModule} from '../capitulo/capitulo.module';
         CompartidoModule,
         CapituloPageModule
     ],
-    declarations: [DetallePage]
+    declarations: [DetallePage, CorazonLikeComponent]
 })
 export class DetallePageModule {}

@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MangaDetalleModel, MangaPreviewModel, RespuestaCatalogo} from '../../compartido/modelos/manga.modelo';
+import {MangaPreviewModel, RespuestaCatalogo} from '../../compartido/modelos/manga.modelo';
 import {GrapeKunApiService} from '../../servicios/grape-kun-api.service';
-import {Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular';
+import {DatosNavegacionService} from '../../servicios/datos-navegacion.service';
 
 @Component({
     selector: 'app-catalogo',
@@ -14,7 +13,7 @@ export class CatalogoPage implements OnInit {
     catalogo: MangaPreviewModel[] = [];
     resp: RespuestaCatalogo;
 
-    constructor(private api: GrapeKunApiService, private router: Router, public loadingController: LoadingController) {
+    constructor(private api: GrapeKunApiService, public nav: DatosNavegacionService) {
     }
 
     ngOnInit() {
@@ -38,25 +37,5 @@ export class CatalogoPage implements OnInit {
             );
         }
         infiniteScroll.target.complete();
-    }
-
-    async obtenerDetalleDesdeCatalogo(preview: MangaPreviewModel) {
-        const loading = await this.loadingController.create(
-            {
-                message: 'Espere por favor...',
-                keyboardClose: false
-            }
-        );
-        await loading.present();
-        this.api.consultarMangaDetalle(preview.id).subscribe(
-            resp => {
-                this.navegarAPaginaDetalle(resp);
-                loading.dismiss();
-            }
-        );
-    }
-
-    navegarAPaginaDetalle(detalle: MangaDetalleModel) {
-        this.router.navigate(['detalle', JSON.stringify(detalle)]);
     }
 }

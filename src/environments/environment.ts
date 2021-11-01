@@ -9,7 +9,8 @@ export const environment = {
     urlLogin: 'http://45.76.79.176:8000/api/login/',
     urlLogout: 'http://45.76.79.176:8000/api/logout/',
     urlLoginToken: 'http://45.76.79.176:8000/api/login-token',
-    urlActualizar: 'http://45.76.79.176:8000/api/actualizar/'
+    urlActualizar: 'http://45.76.79.176:8000/api/actualizar/',
+    urlAleatorio: 'http://45.76.79.176:8000/api/aleatorio/'
 };
 
 /*

@@ -23,7 +23,8 @@ export class MiperfilPage implements OnInit {
 
     actualizarPreferencias(){
         console.log('Actualizando preferencias', this.filtrarAdulto, this.autologin);
-        this.auth.actualizarPreferencias(this.filtrarAdulto, this.autologin);
+        this.auth.usuarioConectado.preferencias.filtrar_contenido_adulto = this.filtrarAdulto;
+        this.auth.usuarioConectado.preferencias.auto_login = this.autologin;
+        this.auth.actualizarUsuario();
     }
-
 }

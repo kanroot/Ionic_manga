@@ -9,6 +9,7 @@ import { MiperfilPageRoutingModule } from './miperfil-routing.module';
 import { MiperfilPage } from './miperfil.page';
 import {CompartidoModule} from '../../compartido/compartido.module';
 import {CapituloPageModule} from '../capitulo/capitulo.module';
+import {InicioPageModule} from '../inicio/inicio.module';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {CapituloPageModule} from '../capitulo/capitulo.module';
         IonicModule,
         MiperfilPageRoutingModule,
         CompartidoModule,
-        CapituloPageModule
+        CapituloPageModule,
+        InicioPageModule
     ],
   declarations: [MiperfilPage]
 })

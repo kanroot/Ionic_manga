@@ -19,6 +19,9 @@ import {CompartidoModule} from '../../compartido/compartido.module';
         InicioPageRoutingModule,
         CompartidoModule
     ],
+    exports: [
+        MangaDisplayCardComponent
+    ],
     declarations: [InicioPage, MangaDisplayCardComponent, BotonNavegacionComponent]
 })
 export class InicioPageModule {

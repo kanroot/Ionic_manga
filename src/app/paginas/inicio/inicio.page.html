@@ -18,12 +18,12 @@
     </ion-grid>
 
 <!--    Favoritos si el usuario está logueado-->
-    <div *ngIf="auth.estaAutenticado.value">
+    <div *ngIf="usuarioAutenticado">
         <ion-item>
             <ion-title >Favoritos de {{auth.usuarioConectado.username}}</ion-title>
         </ion-item>
         <div class="ion-padding">
-            <app-manga-display-card nombreCategoria="Favoritos" [mangaItems]="mangaItems"></app-manga-display-card>
+            <app-manga-display-card nombreCategoria="Favoritos" [mangaItems]="mangaFavoritos"></app-manga-display-card>
         </div>
     </div>
 
@@ -32,11 +32,7 @@
         <ion-title >Aleatorios</ion-title>
     </ion-item>
     <div class="ion-padding">
-        <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaItems"></app-manga-display-card>
-        <ion-item-divider></ion-item-divider>
-        <app-manga-display-card nombreCategoria="Acción" [mangaItems]="mangaItems"></app-manga-display-card>
-        <ion-item-divider></ion-item-divider>
-        <app-manga-display-card nombreCategoria="Otra categoría" [mangaItems]="mangaItems"></app-manga-display-card>
+        <app-manga-display-card nombreCategoria="Aleatorios" [mangaItems]="mangaAleatorios"></app-manga-display-card>
     </div>
 
 </ion-content>

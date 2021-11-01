@@ -15,7 +15,7 @@
                     </ion-item>
                 </ion-menu-toggle>
 
-                <ion-item *ngIf="auth.estaAutenticado.value" (click)="onLogout()">
+                <ion-item *ngIf="auth.estado.value" (click)="onLogout()">
                     <ion-icon name="log-out-outline" slot="start" color="primary"></ion-icon>
                     Cerrar sesión
                 </ion-item>

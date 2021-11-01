@@ -26,3 +26,11 @@ export interface UsuarioRegistroModel {
     password: string;
     fec_nac: Date;
 }
+
+export interface UsuarioActualizarModel {
+    username: string;
+    email: string;
+    fec_nac: Date;
+    preferencias_string: string;
+    favoritos_string: string;
+}

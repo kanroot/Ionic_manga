@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card (click)="nav.navegarADetalleDesdePreview(data)">
     <img alt="{{ data.nombre }}" src="{{ data.enlace_img }}">
     <ion-card-content>
         <ion-card-title>{{data.nombre}}</ion-card-title>

@@ -22,8 +22,8 @@
                         <ion-title>Tus favoritos</ion-title>
                     </ion-item>
                     <ion-item>
-                        <ion-col *ngFor="let manga of datosPerfil.favoritos" size="12" size-sm="6" size-md="3" size-lg="2">
-                            <app-mangapreview [data]="manga"></app-mangapreview>
+                        <ion-col size="12" size-sm="6" size-md="3" size-lg="2">
+                            <app-manga-display-card nombreCategoria="" [mangaItems]="datosPerfil.favoritos"></app-manga-display-card>
                         </ion-col>
                     </ion-item>
                 </ion-list>

@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {MangaPreviewModel} from '../../modelos/manga.modelo';
+import {DatosNavegacionService} from '../../../servicios/datos-navegacion.service';
 
 @Component({
     selector: 'app-mangapreview',
@@ -9,7 +10,7 @@ import {MangaPreviewModel} from '../../modelos/manga.modelo';
 export class MangapreviewComponent implements OnInit {
     @Input() data: MangaPreviewModel;
 
-    constructor() {
+    constructor(public nav: DatosNavegacionService) {
     }
 
     ngOnInit() {
