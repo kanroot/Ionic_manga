@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
             async (_) => {
                 await loading.dismiss();
                 this.router.navigate(['/inicio']);
-                this.toast.mostrar('Bienvenido de vuelta, '+ this.authService.usuarioConectado.username);
+                this.toast.mostrar('Bienvenido de vuelta, '+ this.authService.datosUsuario.username);
             },
             async (err) => {
                 await loading.dismiss();

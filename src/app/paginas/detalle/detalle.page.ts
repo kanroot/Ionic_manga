@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CapituloPreviewModel, MangaDetalleModel, MangaPreviewModel} from '../../compartido/modelos/manga.modelo';
 import {LoadingController} from '@ionic/angular';
 import {GrapeKunApiService} from '../../servicios/grape-kun-api.service';
 import {AuthService} from '../../servicios/auth.service';
+import {CorazonLikeComponent} from './corazon-like/corazon-like.component';
 
 @Component({
     selector: 'app-detalle',
@@ -12,8 +13,8 @@ import {AuthService} from '../../servicios/auth.service';
     styleUrls: ['./detalle.page.scss'],
 })
 export class DetallePage implements OnInit {
+    @ViewChild(CorazonLikeComponent) corazon: CorazonLikeComponent;
     detalle: MangaDetalleModel;
-    likedColor = 'shade';
 
     constructor(
         private route: ActivatedRoute,
@@ -21,10 +22,32 @@ export class DetallePage implements OnInit {
         private api: GrapeKunApiService,
         private router: Router,
         private auth: AuthService) {
+
+        this.auth.usuarioConectado.subscribe((_) => this.onCambioDatosUsuario());
     }
 
     ngOnInit() {
         this.detalle = JSON.parse( this.route.snapshot.paramMap.get('datos'));
+    }
+
+    onCambioDatosUsuario() {
+        // this.corazon.colorcito = this.comprobarFavorito() ? 'danger' : 'medium';
+    }
+
+    comprobarFavorito(): boolean {
+        console.log('comprobando favorito:', this.detalle);
+        if (this.usuarioAutenticado) {
+            this.auth.datosUsuario.favoritos.forEach(
+                (manga) => {
+                    if (manga.id === this.detalle.manga_id) {
+                        console.log('manga encontrado en favoritos');
+                        return true;
+                    }
+                }
+            );
+        }
+        console.log('manga no encontrado en favoritos');
+        return false;
     }
 
     async obtenerCapituloDesdeCapPreview(capIndex: number) {
@@ -51,29 +74,17 @@ export class DetallePage implements OnInit {
         return this.auth?.estado?.value?.estaAutenticado;
     }
 
-    get esFavorito(): boolean {
-        if (this.usuarioAutenticado) {
-            for (const manga of this.auth.estado.value.datosUsuario.favoritos) {
-                if (manga.id === this.detalle.manga_id) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     toggleFavoritos(){
         if (!this.usuarioAutenticado) {
             return;
         }
+        const esFavorito = this.comprobarFavorito();
 
-        if (this.esFavorito) {
+        if (esFavorito) {
             this.eliminarDeFavoritos();
         } else {
             this.agregarAFavoritos();
         }
-
-        this.auth.actualizarUsuario();
     }
 
     private obtenerComoPreview() {
@@ -109,17 +120,23 @@ export class DetallePage implements OnInit {
     }
 
     private eliminarDeFavoritos() {
-        this.auth.usuarioConectado.favoritos.forEach(
+        console.log('Eliminando de favoritos', this.detalle);
+        this.auth.datosUsuario.favoritos.forEach(
             (manga, index) => {
                 if (manga.id === this.detalle.manga_id) {
-                    this.auth.usuarioConectado.favoritos.splice(index, 1);
+                    const usuario = this.auth.datosUsuario;
+                    usuario.favoritos.splice(index, 1);
+                    this.auth.actualizarUsuario(usuario);
                 }
             }
         );
     }
 
     private agregarAFavoritos() {
+        console.log('Agregando a favoritos:', this.detalle);
         const mangaPreview = this.obtenerComoPreview();
-        this.auth.usuarioConectado.favoritos.push(mangaPreview);
+        const usuario = this.auth.datosUsuario;
+        usuario.favoritos.push(mangaPreview);
+        this.auth.actualizarUsuario(usuario);
     }
 }

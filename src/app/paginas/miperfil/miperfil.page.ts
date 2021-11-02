@@ -16,15 +16,16 @@ export class MiperfilPage implements OnInit {
     }
 
     ngOnInit() {
-        this.datosPerfil = this.auth.usuarioConectado;
+        this.datosPerfil = this.auth.datosUsuario;
         this.filtrarAdulto = this.datosPerfil.preferencias.filtrar_contenido_adulto;
         this.autologin = this.datosPerfil.preferencias.auto_login;
     }
 
     actualizarPreferencias(){
         console.log('Actualizando preferencias', this.filtrarAdulto, this.autologin);
-        this.auth.usuarioConectado.preferencias.filtrar_contenido_adulto = this.filtrarAdulto;
-        this.auth.usuarioConectado.preferencias.auto_login = this.autologin;
-        this.auth.actualizarUsuario();
+        const usuario = this.auth.datosUsuario;
+        usuario.preferencias.filtrar_contenido_adulto = this.filtrarAdulto;
+        usuario.preferencias.auto_login = this.autologin;
+        this.auth.actualizarUsuario(usuario);
     }
 }

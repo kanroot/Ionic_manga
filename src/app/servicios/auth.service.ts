@@ -42,8 +42,8 @@ export class EstadoAuth {
 })
 export class AuthService {
     estado: BehaviorSubject<EstadoAuth> = new BehaviorSubject<EstadoAuth>(null);
+    usuarioConectado: BehaviorSubject<UsuarioModel> = new BehaviorSubject<UsuarioModel>(USUARIO_ANONIMO);
     token = '';
-    usuarioConectado: UsuarioModel;
 
     constructor(
         private http: HttpClient,
@@ -51,16 +51,25 @@ export class AuthService {
         private toast: ToastManagerService,
         private errorManager: ErrorManagerService) {
         this.estado.subscribe((nuevoEstado: EstadoAuth) => this.onCambioEstadoAutenticado(nuevoEstado));
+        this.usuarioConectado.subscribe((nuevoUsuario: UsuarioModel) => this.onCambioEstadoDatosUsuario(nuevoUsuario));
         this.intentaAutoLogin();
+    }
+
+    get datosUsuario(): UsuarioModel {
+        return this.usuarioConectado?.value;
+    }
+
+    onCambioEstadoDatosUsuario(nuevoEstado: UsuarioModel) {
+        console.log('Cambiaron los datos de usuario: ', nuevoEstado);
     }
 
     onCambioEstadoAutenticado(nuevoEstado: EstadoAuth) {
         console.log('Cambio de estado de autenticado: ', nuevoEstado);
-        if ( nuevoEstado && nuevoEstado.estaAutenticado) {
-            this.usuarioConectado = nuevoEstado.datosUsuario;
-            this.toast.mostrar('Bienvenido de vuelta, ' + this.usuarioConectado.username);
+        if (nuevoEstado && nuevoEstado.estaAutenticado) {
+            this.usuarioConectado.next(nuevoEstado.datosUsuario);
+            this.toast.mostrar('Bienvenido de vuelta, ' + this.datosUsuario.username);
         } else {
-            this.usuarioConectado = USUARIO_ANONIMO;
+            this.usuarioConectado.next(USUARIO_ANONIMO);
         }
     }
 
@@ -106,7 +115,6 @@ export class AuthService {
 
         return this.http.post(environment.urlLoginToken, {}, {headers}).subscribe(
             (data: RespuestaUsuario) => {
-                this.usuarioConectado = data.user;
                 this.estado.next(new EstadoAuth(true, data.user));
                 this.conservarTokenEnlocal();
             },
@@ -138,7 +146,7 @@ export class AuthService {
     }
 
     async conservarTokenEnlocal() {
-        if (!this.usuarioConectado.preferencias.auto_login) {
+        if (!this.datosUsuario.preferencias.auto_login) {
             return;
         }
 
@@ -147,7 +155,7 @@ export class AuthService {
     }
 
 
-    actualizarUsuario() {
+    actualizarUsuario(usuario: UsuarioModel) {
         const headers = new HttpHeaders(
             {
                 'Content-Type': 'application/json',
@@ -155,24 +163,25 @@ export class AuthService {
             }
         );
 
-        const usuario: UsuarioActualizarModel = {
-            username: this.usuarioConectado.username,
-            email: this.usuarioConectado.email,
-            fec_nac: this.usuarioConectado.fec_nac,
-            preferencias_string: JSON.stringify(this.usuarioConectado.preferencias),
-            favoritos_string: JSON.stringify(this.usuarioConectado.favoritos)
+        const usuarioModificado: UsuarioActualizarModel = {
+            username: usuario.username,
+            email: usuario.email,
+            fec_nac: usuario.fec_nac,
+            preferencias_string: JSON.stringify(usuario.preferencias),
+            favoritos_string: JSON.stringify(usuario.favoritos)
         };
 
-        return this.http.post(environment.urlActualizar, usuario, {headers}).subscribe(
+        return this.http.post(environment.urlActualizar, usuarioModificado, {headers}).subscribe(
             (data: any) => {
-                this.usuarioConectado = {
-                    id: this.usuarioConectado.id,
+                const nuevoUsuario: UsuarioModel = {
+                    id: this.datosUsuario.id,
                     username: data.username,
                     email: data.email,
                     fec_nac: data.fec_nac,
                     preferencias: JSON.parse(data.preferencias_string),
                     favoritos: JSON.parse(data.favoritos_string)
                 };
+                this.usuarioConectado.next(nuevoUsuario);
                 this.toast.mostrar('¡Perfil actualizado!');
                 this.conservarTokenEnlocal();
             },

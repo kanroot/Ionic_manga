@@ -20,10 +20,13 @@
 <!--    Favoritos si el usuario está logueado-->
     <div *ngIf="usuarioAutenticado">
         <ion-item>
-            <ion-title >Favoritos de {{auth.usuarioConectado.username}}</ion-title>
+            <ion-title >Favoritos de {{auth.datosUsuario.username}}</ion-title>
         </ion-item>
         <div class="ion-padding">
-            <app-manga-display-card nombreCategoria="Favoritos" [mangaItems]="mangaFavoritos"></app-manga-display-card>
+            <app-manga-display-card *ngIf="mangaFavoritos.length > 0" nombreCategoria="Favoritos" [mangaItems]="mangaFavoritos"></app-manga-display-card>
+            <div class="ion-text-center" *ngIf="mangaFavoritos.length < 1">
+                <small>No tienes favoritos, visita el catálogo y agrega</small>
+            </div>
         </div>
     </div>
 

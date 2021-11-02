@@ -15,7 +15,7 @@ export class GrapeKunApiService {
     consultarCatalogo(pagina: number) {
         const url = new URL(environment.urlCatalogo);
         url.searchParams.append('page', pagina.toString());
-        const nsfw = !this.auth?.usuarioConectado?.preferencias.filtrar_contenido_adulto;
+        const nsfw = !this.auth?.datosUsuario?.preferencias.filtrar_contenido_adulto;
         if (nsfw) {
             url.searchParams.append('nsfw', 'true');
         }
@@ -35,7 +35,7 @@ export class GrapeKunApiService {
 
     consultarMangaAleatorio() {
         const url = new URL(environment.urlAleatorio);
-        const nsfw = !this.auth?.usuarioConectado?.preferencias.filtrar_contenido_adulto;
+        const nsfw = !this.auth?.datosUsuario?.preferencias.filtrar_contenido_adulto;
         if (nsfw) {
             url.searchParams.append('nsfw', 'true');
         }
