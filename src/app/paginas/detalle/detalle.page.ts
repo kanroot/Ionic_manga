@@ -15,6 +15,7 @@ import {CorazonLikeComponent} from './corazon-like/corazon-like.component';
 export class DetallePage implements OnInit {
     @ViewChild(CorazonLikeComponent) corazon: CorazonLikeComponent;
     detalle: MangaDetalleModel;
+    valueCorazon: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,8 +40,10 @@ export class DetallePage implements OnInit {
             for (const manga of this.auth.datosUsuario.favoritos) {
                 if (manga.id === this.detalle.manga_id) {
                     console.log('manga encontrado en favoritos');
+                    this.valueCorazon = true;
                     return true;
                 }
+                this.valueCorazon = false;
             }
         }
         console.log('manga no encontrado en favoritos');
