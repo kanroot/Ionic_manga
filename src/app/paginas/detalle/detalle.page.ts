@@ -27,7 +27,7 @@ export class DetallePage implements OnInit {
     }
 
     ngOnInit() {
-        this.detalle = JSON.parse( this.route.snapshot.paramMap.get('datos'));
+        this.detalle = JSON.parse(this.route.snapshot.paramMap.get('datos'));
     }
 
     onCambioDatosUsuario() {
@@ -37,14 +37,12 @@ export class DetallePage implements OnInit {
     comprobarFavorito(): boolean {
         console.log('comprobando favorito:', this.detalle);
         if (this.usuarioAutenticado) {
-            this.auth.datosUsuario.favoritos.forEach(
-                (manga) => {
-                    if (manga.id === this.detalle.manga_id) {
-                        console.log('manga encontrado en favoritos');
-                        return true;
-                    }
+            for (const manga of this.auth.datosUsuario.favoritos) {
+                if (manga.id === this.detalle.manga_id) {
+                    console.log('manga encontrado en favoritos');
+                    return true;
                 }
-            );
+            }
         }
         console.log('manga no encontrado en favoritos');
         return false;
@@ -74,7 +72,7 @@ export class DetallePage implements OnInit {
         return this.auth?.estado?.value?.estaAutenticado;
     }
 
-    toggleFavoritos(){
+    toggleFavoritos() {
         if (!this.usuarioAutenticado) {
             return;
         }
