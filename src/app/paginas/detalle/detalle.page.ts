@@ -35,7 +35,6 @@ export class DetallePage implements OnInit {
     }
 
     comprobarFavorito(): boolean {
-        console.log('comprobando favorito:', this.detalle);
         if (this.usuarioAutenticado) {
             for (const manga of this.auth.datosUsuario.favoritos) {
                 if (manga.id === this.detalle.manga_id) {
