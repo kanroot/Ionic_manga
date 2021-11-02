@@ -5,7 +5,7 @@
 <ion-content>
     <ion-card class="ion-padding">
         <ion-card-content>
-            <app-corazon-like [colorcito]="valueCorazon ? 'danger' : 'success' " (click)="toggleFavoritos()" *ngIf="usuarioAutenticado"></app-corazon-like>
+            <app-corazon-like [colorcito]="valueCorazon ? 'danger' : '' " (click)="toggleFavoritos()" *ngIf="usuarioAutenticado"></app-corazon-like>
             <ion-img [src]="detalle.imagen"></ion-img>
         </ion-card-content>
         <ion-card-title>{{detalle.nombre}}</ion-card-title>

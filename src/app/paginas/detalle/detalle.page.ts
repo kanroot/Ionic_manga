@@ -23,19 +23,15 @@ export class DetallePage implements OnInit {
         private api: GrapeKunApiService,
         private router: Router,
         private auth: AuthService) {
-
-        this.auth.usuarioConectado.subscribe((_) => this.onCambioDatosUsuario());
     }
 
     ngOnInit() {
         this.detalle = JSON.parse(this.route.snapshot.paramMap.get('datos'));
-    }
-
-    onCambioDatosUsuario() {
-        // this.corazon.colorcito = this.comprobarFavorito() ? 'danger' : 'medium';
+        this.comprobarFavorito();
     }
 
     comprobarFavorito(): boolean {
+        this.valueCorazon = false;
         if (this.usuarioAutenticado) {
             for (const manga of this.auth.datosUsuario.favoritos) {
                 if (manga.id === this.detalle.manga_id) {
@@ -130,6 +126,7 @@ export class DetallePage implements OnInit {
                 }
             }
         );
+        this.comprobarFavorito();
     }
 
     private agregarAFavoritos() {
@@ -138,5 +135,6 @@ export class DetallePage implements OnInit {
         const usuario = this.auth.datosUsuario;
         usuario.favoritos.push(mangaPreview);
         this.auth.actualizarUsuario(usuario);
+        this.comprobarFavorito();
     }
 }
