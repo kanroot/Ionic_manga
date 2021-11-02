@@ -128,6 +128,7 @@ export class AuthService {
         console.log('Registrando usuario');
         return this.http.post(environment.urlRegistro, usuario).subscribe(
             async (data: RespuestaUsuario) => {
+                this.token = data.token;
                 await this.iniciarSesionConToken(data.token);
                 return data;
             },
